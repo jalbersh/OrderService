@@ -140,6 +140,7 @@ public class MapService {
             String address1 = addressOptional.isPresent() ? addressOptional.get().getAddress1() : "";
             System.out.println("address1="+address1);
             String url = routeUrl+"?key="+consumerKey+"&from="+address1+"&to="+address2;
+            // call mapquest REST endpoint for route
             ResponseEntity<Route> responseEntity = restTemplate.getForEntity(url, Route.class);
             if (responseEntity.getStatusCode()== HttpStatus.OK) {
                 time = responseEntity.getBody().getFormattedTime();
